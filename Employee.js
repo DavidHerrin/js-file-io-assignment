@@ -3,14 +3,21 @@
 const fs = require('fs')
 
 class Employee {
-  constructor (/* ??? */) {
-    // TODO
+  constructor (employeeObj) {
+    this.name = employeeObj.name
+    this.title = employeeObj.title
+    this.salary = employeeObj.salary
   }
 
-  // TODO ???
+  promote (title, salary) {
+    this.title = title
+    this.salary = salary
+  }
 }
 
-// TODO ???
+Employee.parseFromFilePath = function (filePath) {
+  return new Employee(JSON.parse(fs.readFileSync(filePath, 'utf8')))
+}
 
 module.exports = {
   Employee
